@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCH TIRES | Inventory System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LCH TIRES</div>
+        <div class="nav-links">
+            <button class="nav-btn active">Inventory</button>
+            <button class="nav-btn" onclick="mostrarLogin()">Admin</button>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Tabla inventario -->
+        <div class="inventory-section">
+            <div class="section-header">
+                <h2>Tire Inventory</h2>
+                <input type="text" placeholder="Search by size or brand..." id="search">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SIZE</th>
+                        <th>BRAND</th>
+                        <th>CONDITION</th>
+                        <th>STOCK</th>
+                        <th>PRICE</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-body"></tbody>
+            </table>
+        </div>
+
+        <!-- Carrito -->
+        <div class="cart-section">
+            <h3>Cart</h3>
+            <div id="cart-items">
+                <p class="empty-msg">No tires selected yet</p>
+            </div>
+            <div class="cart-footer">
+                <div class="total-row">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn-finalize" onclick="finalizarVenta()">Finalize Sale</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal login -->
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Admin Access</h3>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-pass" placeholder="Password">
+            <div class="modal-actions">
+                <button onclick="login()" class="btn-save">Login</button>
+                <button onclick="cerrarLogin()" class="btn-delete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

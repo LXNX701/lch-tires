@@ -1,0 +1,369 @@
+:root {
+    --bg-dark: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --accent: #f39c12;
+    --text-gray: #a0a0a0;
+    --green: #27ae60;
+    --red: #e74c3c;
+}
+
+/* Fix crítico: evita que inputs se desborden del contenedor */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+/* ── Navbar ── */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: var(--card-bg);
+    border-bottom: 1px solid #333;
+    align-items: center;
+}
+
+.logo {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ── Layout ── */
+.main-layout {
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+}
+
+.admin-layout {
+    flex-direction: column;
+}
+
+.inventory-section,
+.cart-section,
+.form-section {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.inventory-section {
+    flex: 3;
+    overflow-x: auto; /* scroll horizontal en pantallas pequeñas */
+}
+
+.cart-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* ── Section header con buscador ── */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.section-header input {
+    padding: 8px 14px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 6px;
+    width: 260px;
+}
+
+/* ── Tabla ── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    color: var(--text-gray);
+    font-size: 12px;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #222;
+    font-size: 14px;
+}
+
+/* ── Badges ── */
+.badge-new {
+    background: rgba(39, 174, 96, 0.2);
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-used {
+    background: rgba(243, 156, 18, 0.15);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ── Botones ── */
+.btn-select {
+    background: var(--accent);
+    border: none;
+    color: black;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+    transition: opacity 0.2s;
+}
+
+.btn-select:hover:not(:disabled) {
+    opacity: 0.85;
+}
+
+.nav-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid #333;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.nav-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-finalize,
+.btn-save {
+    width: 100%;
+    background: #634710;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.btn-finalize:hover,
+.btn-save:hover {
+    background: #7a5715;
+}
+
+.btn-save:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-delete,
+.btn-remove {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: opacity 0.2s;
+}
+
+.btn-delete:hover,
+.btn-remove:hover {
+    opacity: 0.8;
+}
+
+/* ── Modal ── */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--accent);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content h3 {
+    margin: 0 0 5px;
+    color: var(--accent);
+}
+
+.modal-content input {
+    padding: 10px 12px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.modal-actions .btn-save,
+.modal-actions .btn-delete {
+    flex: 1;
+    width: auto;
+    margin-top: 0;
+    padding: 10px;
+}
+
+/* ── Formulario admin ── */
+.form-section {
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.row .input-group {
+    flex: 1;
+}
+
+/* ── Carrito ── */
+.cart-footer {
+    margin-top: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #111;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.cart-item-price {
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    margin-top: 5px;
+}
+
+.empty-msg {
+    color: var(--text-gray);
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .cart-section {
+        min-width: unset;
+    }
+
+    .section-header input {
+        width: 100%;
+    }
+}
